@@ -59,22 +59,22 @@
                     <rect key="frame" x="150" y="274" width="20" height="20"/>
                 </activityIndicatorView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HnI-CK-epB" customClass="CircleView" customModule="Clear" customModuleProvider="target">
-                    <rect key="frame" x="40" y="164" width="240" height="240"/>
+                    <rect key="frame" x="10" y="134" width="300" height="300"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="1Na-hz-OoB">
-                            <rect key="frame" x="86.5" y="71" width="67" height="17"/>
+                            <rect key="frame" x="116.5" y="101" width="67" height="17"/>
                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="s90-72-DIU">
-                            <rect key="frame" x="22" y="96" width="196.5" height="48"/>
+                            <rect key="frame" x="52" y="126" width="196.5" height="48"/>
                             <fontDescription key="fontDescription" type="system" pointSize="40"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="wFw-Ec-42L">
-                            <rect key="frame" x="75.5" y="152" width="89" height="17"/>
+                            <rect key="frame" x="105.5" y="182" width="89" height="17"/>
                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -92,6 +92,7 @@
                         <constraint firstItem="1Na-hz-OoB" firstAttribute="centerX" secondItem="s90-72-DIU" secondAttribute="centerX" id="eMv-17-YSH"/>
                         <constraint firstItem="wFw-Ec-42L" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="HnI-CK-epB" secondAttribute="leading" constant="20" symbolic="YES" id="ou1-0A-dHe"/>
                         <constraint firstAttribute="width" secondItem="HnI-CK-epB" secondAttribute="height" multiplier="1:1" id="ugT-2B-awc"/>
+                        <constraint firstAttribute="width" constant="300" id="x9r-Pu-1f6"/>
                         <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="wFw-Ec-42L" secondAttribute="bottom" constant="20" symbolic="YES" id="xIe-Mv-sx5"/>
                         <constraint firstItem="s90-72-DIU" firstAttribute="centerY" secondItem="HnI-CK-epB" secondAttribute="centerY" id="xSf-tM-IjB"/>
                     </constraints>
@@ -111,7 +112,7 @@
                 <constraint firstItem="HnI-CK-epB" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="f0L-j1-enh"/>
                 <constraint firstItem="JMF-g3-A32" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="mW8-L7-m2k"/>
                 <constraint firstItem="JMF-g3-A32" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="uvR-9k-rr9"/>
-                <constraint firstItem="HnI-CK-epB" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="40" id="wE6-5b-cml"/>
+                <constraint firstItem="HnI-CK-epB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vUN-kp-3ea" secondAttribute="leading" priority="750" constant="40" id="wE6-5b-cml"/>
             </constraints>
             <point key="canvasLocation" x="139" y="96"/>
         </view>
