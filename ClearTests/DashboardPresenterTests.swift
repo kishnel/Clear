@@ -49,9 +49,18 @@ class DashboardPresenterTests: XCTestCase {
 		XCTAssertEqual(view.updateState, .loading)
 	}
 
+	func testErrorState() throws {
+
+		let presenter = DashboardPresenter(dispatchQueue: MockDispatchQueue())
+		presenter.view = view
+		presenter.creditScoreDidFail(with: NSError.mockError)
+
+		XCTAssertEqual(view.updateState, .error)
+	}
+
 	func testDataState() throws {
 
-		let presenter = DashboardPresenter()
+		let presenter = DashboardPresenter(dispatchQueue: MockDispatchQueue())
 		presenter.view = view
 
 		let creditScore = CreditScoreResponse(

@@ -9,25 +9,6 @@ import XCTest
 import NetworkModule
 @testable import Clear
 
-private extension NSError {
-	static let mockError = NSError(domain: "clear.tests", code: 666, userInfo: nil)
-}
-
-private class MockSession: NetworkSession {
-
-	let result: NetworkResult
-
-	init(result: NetworkResult) {
-
-		self.result = result
-	}
-
-	func fetch(request: URLRequest, completion: @escaping (NetworkResult) -> Void) {
-
-		completion(result)
-	}
-}
-
 class ClearTests: XCTestCase {
 
     override func setUpWithError() throws {

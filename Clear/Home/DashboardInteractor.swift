@@ -17,15 +17,17 @@ class DashboardInteractor {
 
 	private let presenter: DashboardPresenterProtocol
 	private let router: DashboardRouterProtocol
+	private let session: NetworkSession
 
 	deinit {
 		print("DEINIT \(self)")
 	}
 
-	init(presenter: DashboardPresenterProtocol, router: DashboardRouterProtocol) {
+	init(presenter: DashboardPresenterProtocol, router: DashboardRouterProtocol, session: NetworkSession = URLSession.shared) {
 
 		self.presenter = presenter
 		self.router = router
+		self.session = session
 	}
 }
 
@@ -35,15 +37,13 @@ extension DashboardInteractor: DashboardInteractorProtocol {
 
 		presenter.creditScoreWillLoad()
 
-		NetworkRequest.getCreditScore { [weak self] result in
+		NetworkRequest.getCreditScore(session: session) { [weak self] result in
 
-			DispatchQueue.main.async {
-				switch result {
-				case .success(let creditScoreResponse):
-					self?.presenter.creditScoreDidLoad(score: creditScoreResponse)
-				case .failure(let error):
-					print(error)
-				}
+			switch result {
+			case .success(let creditScoreResponse):
+				self?.presenter.creditScoreDidLoad(score: creditScoreResponse)
+			case .failure(let error):
+				self?.presenter.creditScoreDidFail(with: error)
 			}
 		}
 	}

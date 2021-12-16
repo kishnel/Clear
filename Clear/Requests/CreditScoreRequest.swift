@@ -27,7 +27,7 @@ private extension URL {
 
 public extension NetworkRequest {
 
-	static func getCreditScore(session: NetworkSession = URLSession.shared, completion: @escaping (Result<CreditScoreResponse, Error>) -> Void) {
+	static func getCreditScore(session: NetworkSession, completion: @escaping (Result<CreditScoreResponse, Error>) -> Void) {
 
 		NetworkRequest(url: .url, method: .get, session: session).perform(timeout: 10) { result in
 

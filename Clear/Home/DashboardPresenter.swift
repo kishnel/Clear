@@ -11,14 +11,22 @@ protocol DashboardPresenterProtocol: AnyObject {
 
 	func creditScoreWillLoad()
 	func creditScoreDidLoad(score: CreditScoreResponse)
+	func creditScoreDidFail(with error: Error)
 }
 
 class DashboardPresenter {
 
 	weak var view: DashboardViewProtocol?
 
+	private let dispatchQueue: DispatchQueueProtocol
+
 	deinit {
 		print("DEINIT \(self)")
+	}
+
+	init(dispatchQueue: DispatchQueueProtocol = DispatchQueue.main) {
+
+		self.dispatchQueue = dispatchQueue
 	}
 }
 
@@ -32,10 +40,20 @@ extension DashboardPresenter: DashboardPresenterProtocol {
 	func creditScoreDidLoad(score: CreditScoreResponse) {
 
 		let viewModel = DashboardViewModel(
-			boxTitle: "Your credit score is",
+			boxTitle: NSLocalizedString("Your credit score is", comment: "Dashboard box descriptive title"),
 			boxValue: "\(score.creditReportInfo.score)",
-			boxSubtitle: "out of \(score.creditReportInfo.maxScoreValue)"
+			boxSubtitle: String(format: NSLocalizedString("out of %d", comment: "Dashboard box formatted subtitle"), score.creditReportInfo.maxScoreValue)
 		)
-		view?.update(state: .box(viewModel))
+
+		dispatchQueue.async(execute: DispatchWorkItem {
+			self.view?.update(state: .box(viewModel))
+		})
+	}
+
+	func creditScoreDidFail(with: Error) {
+
+		dispatchQueue.async(execute: DispatchWorkItem {
+			self.view?.update(state: .error)
+		})
 	}
 }
