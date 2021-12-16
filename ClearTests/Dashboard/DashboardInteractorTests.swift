@@ -33,8 +33,11 @@ private class MockPresenter: DashboardPresenterProtocol {
 
 private class MockRouter: DashboardRouterProtocol {
 
+	private(set) var showDetailDidCall = false
+
 	func showDetail() {
 
+		showDetailDidCall = true
 	}
 }
 
@@ -63,6 +66,21 @@ class DashboardInteractorTests: XCTestCase {
 		XCTAssertEqual(presenter.error?.localizedDescription, NSError.mockError.localizedDescription)
 	}
 
+	func testViewDidLoad_DecodingError() throws {
+
+		let presenter = MockPresenter()
+		let router = MockRouter()
+		let session = MockSession(result: .success("".data(using: .utf8)!))
+		let interactor = DashboardInteractor(presenter: presenter, router: router, session: session)
+
+		XCTAssertFalse(presenter.creditScoreWillLoadDidCall)
+
+		interactor.viewDidLoad()
+
+		XCTAssertTrue(presenter.creditScoreWillLoadDidCall)
+		XCTAssertNotNil(presenter.error as? DecodingError)
+	}
+
 	func testViewDidLoad_Success() throws {
 
 		let jsonFileURL = Bundle(for: Self.self).url(forResource: "creditScore", withExtension: "json")
@@ -79,5 +97,34 @@ class DashboardInteractorTests: XCTestCase {
 		XCTAssertTrue(presenter.creditScoreWillLoadDidCall)
 		XCTAssertNil(presenter.error)
 		XCTAssertEqual(presenter.scoreResponse?.creditReportInfo.score, 514)
+	}
+
+	func testRetryButtonTap() throws {
+
+		let jsonFileURL = Bundle(for: Self.self).url(forResource: "creditScore", withExtension: "json")
+		let data = try Data(contentsOf: jsonFileURL!)
+		let presenter = MockPresenter()
+		let router = MockRouter()
+		let session = MockSession(result: .success(data))
+		let interactor = DashboardInteractor(presenter: presenter, router: router, session: session)
+
+		XCTAssertFalse(presenter.creditScoreWillLoadDidCall)
+
+		interactor.retryButtonDidTap()
+
+		XCTAssertTrue(presenter.creditScoreWillLoadDidCall)
+		XCTAssertNil(presenter.error)
+		XCTAssertEqual(presenter.scoreResponse?.creditReportInfo.score, 514)
+	}
+
+	func testBoxTap() throws {
+
+		let presenter = MockPresenter()
+		let router = MockRouter()
+		let interactor = DashboardInteractor(presenter: presenter, router: router)
+
+		interactor.boxDidTap()
+
+		XCTAssertTrue(router.showDetailDidCall)
 	}
 }

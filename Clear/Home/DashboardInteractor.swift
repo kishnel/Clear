@@ -11,6 +11,8 @@ import NetworkModule
 protocol DashboardInteractorProtocol: AnyObject {
 
 	func viewDidLoad()
+	func retryButtonDidTap()
+	func boxDidTap()
 }
 
 class DashboardInteractor {
@@ -19,21 +21,14 @@ class DashboardInteractor {
 	private let router: DashboardRouterProtocol
 	private let session: NetworkSession
 
-	deinit {
-		print("DEINIT \(self)")
-	}
-
 	init(presenter: DashboardPresenterProtocol, router: DashboardRouterProtocol, session: NetworkSession = URLSession.shared) {
 
 		self.presenter = presenter
 		self.router = router
 		self.session = session
 	}
-}
 
-extension DashboardInteractor: DashboardInteractorProtocol {
-
-	func viewDidLoad() {
+	private func getCreditScore() {
 
 		presenter.creditScoreWillLoad()
 
@@ -46,5 +41,23 @@ extension DashboardInteractor: DashboardInteractorProtocol {
 				self?.presenter.creditScoreDidFail(with: error)
 			}
 		}
+	}
+}
+
+extension DashboardInteractor: DashboardInteractorProtocol {
+
+	func viewDidLoad() {
+
+		getCreditScore()
+	}
+
+	func retryButtonDidTap() {
+
+		getCreditScore()
+	}
+
+	func boxDidTap() {
+
+		router.showDetail()
 	}
 }

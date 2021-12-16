@@ -20,10 +20,6 @@ class DashboardPresenter {
 
 	private let dispatchQueue: DispatchQueueProtocol
 
-	deinit {
-		print("DEINIT \(self)")
-	}
-
 	init(dispatchQueue: DispatchQueueProtocol = DispatchQueue.main) {
 
 		self.dispatchQueue = dispatchQueue
@@ -50,10 +46,10 @@ extension DashboardPresenter: DashboardPresenterProtocol {
 		})
 	}
 
-	func creditScoreDidFail(with: Error) {
+	func creditScoreDidFail(with error: Error) {
 
 		dispatchQueue.async(execute: DispatchWorkItem {
-			self.view?.update(state: .error)
+			self.view?.update(state: .error(error.localizedDescription))
 		})
 	}
 }

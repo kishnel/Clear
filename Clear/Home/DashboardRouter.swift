@@ -15,10 +15,6 @@ protocol DashboardRouterProtocol: AnyObject {
 
 class DashboardRouter {
 
-	deinit {
-		print("DEINIT \(self)")
-	}
-
 	private let navigationController: UINavigationController
 
 	init(navigationController: UINavigationController) {

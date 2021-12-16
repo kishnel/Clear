@@ -15,6 +15,9 @@
                 <outlet property="boxTitleLabel" destination="1Na-hz-OoB" id="owJ-MC-35L"/>
                 <outlet property="boxValueLabel" destination="s90-72-DIU" id="VP3-ZH-M4a"/>
                 <outlet property="circleView" destination="HnI-CK-epB" id="UZZ-Io-rBc"/>
+                <outlet property="errorButton" destination="9Kg-Cl-iqk" id="o1Z-d7-Wm8"/>
+                <outlet property="errorContainer" destination="hST-fZ-FB4" id="c84-9N-RWz"/>
+                <outlet property="errorLabel" destination="gT0-uz-e8B" id="dGI-BM-IZI"/>
                 <outlet property="view" destination="iN0-l3-epB" id="UHN-6A-kVN"/>
             </connections>
         </placeholder>
@@ -23,34 +26,63 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hST-fZ-FB4">
+                    <rect key="frame" x="20" y="234.5" width="280" height="99.5"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gT0-uz-e8B">
+                            <rect key="frame" x="119.5" y="20" width="41.5" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Kg-Cl-iqk">
+                            <rect key="frame" x="106.5" y="48.5" width="67" height="31"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                            <connections>
+                                <action selector="retryButtonDidTap:" destination="-1" eventType="touchUpInside" id="STs-hm-Unj"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="gT0-uz-e8B" firstAttribute="centerX" secondItem="hST-fZ-FB4" secondAttribute="centerX" id="3b5-85-bTk"/>
+                        <constraint firstItem="gT0-uz-e8B" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hST-fZ-FB4" secondAttribute="leading" constant="20" symbolic="YES" id="EKh-jh-0Ao"/>
+                        <constraint firstItem="9Kg-Cl-iqk" firstAttribute="top" secondItem="gT0-uz-e8B" secondAttribute="bottom" constant="8" symbolic="YES" id="IWd-OD-S8m"/>
+                        <constraint firstItem="9Kg-Cl-iqk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hST-fZ-FB4" secondAttribute="leading" constant="20" symbolic="YES" id="L1I-yY-P9B"/>
+                        <constraint firstItem="9Kg-Cl-iqk" firstAttribute="centerX" secondItem="hST-fZ-FB4" secondAttribute="centerX" id="Sei-C2-U6W"/>
+                        <constraint firstAttribute="bottom" secondItem="9Kg-Cl-iqk" secondAttribute="bottom" constant="20" symbolic="YES" id="TEl-1r-obf"/>
+                        <constraint firstItem="gT0-uz-e8B" firstAttribute="top" secondItem="hST-fZ-FB4" secondAttribute="top" constant="20" symbolic="YES" id="iWK-jz-gTP"/>
+                    </constraints>
+                </view>
                 <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="JMF-g3-A32">
                     <rect key="frame" x="150" y="274" width="20" height="20"/>
                 </activityIndicatorView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HnI-CK-epB" customClass="CircleView" customModule="Clear" customModuleProvider="target">
-                    <rect key="frame" x="60" y="184" width="200" height="200"/>
+                    <rect key="frame" x="40" y="164" width="240" height="240"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Na-hz-OoB">
-                            <rect key="frame" x="66.5" y="57" width="67" height="17"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="1Na-hz-OoB">
+                            <rect key="frame" x="86.5" y="71" width="67" height="17"/>
                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="s90-72-DIU">
-                            <rect key="frame" x="26" y="82" width="148.5" height="36"/>
-                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                            <rect key="frame" x="22" y="96" width="196.5" height="48"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="40"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wFw-Ec-42L">
-                            <rect key="frame" x="55.5" y="126" width="89" height="17"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="wFw-Ec-42L">
+                            <rect key="frame" x="75.5" y="152" width="89" height="17"/>
                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBlueColor"/>
+                    <gestureRecognizers/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="200" id="4nB-Nf-t0X"/>
                         <constraint firstItem="s90-72-DIU" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="HnI-CK-epB" secondAttribute="leading" constant="20" symbolic="YES" id="8Sw-wz-o6f"/>
                         <constraint firstItem="wFw-Ec-42L" firstAttribute="top" secondItem="s90-72-DIU" secondAttribute="bottom" constant="8" symbolic="YES" id="EaY-JK-iW0"/>
                         <constraint firstItem="wFw-Ec-42L" firstAttribute="centerX" secondItem="s90-72-DIU" secondAttribute="centerX" id="Ffa-od-u6h"/>
@@ -63,19 +95,31 @@
                         <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="wFw-Ec-42L" secondAttribute="bottom" constant="20" symbolic="YES" id="xIe-Mv-sx5"/>
                         <constraint firstItem="s90-72-DIU" firstAttribute="centerY" secondItem="HnI-CK-epB" secondAttribute="centerY" id="xSf-tM-IjB"/>
                     </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="BIV-mV-K3O" appends="YES" id="ITY-1P-xqP"/>
+                    </connections>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="HnI-CK-epB" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="6TQ-7H-YKm"/>
+                <constraint firstItem="hST-fZ-FB4" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="EnZ-1e-eDG"/>
+                <constraint firstItem="hST-fZ-FB4" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="K2O-OZ-YRy"/>
+                <constraint firstItem="hST-fZ-FB4" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="T2t-F5-EWz"/>
                 <constraint firstItem="HnI-CK-epB" firstAttribute="width" secondItem="HnI-CK-epB" secondAttribute="height" multiplier="1:1" id="TqY-Fr-ud6"/>
                 <constraint firstItem="HnI-CK-epB" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="f0L-j1-enh"/>
                 <constraint firstItem="JMF-g3-A32" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="mW8-L7-m2k"/>
                 <constraint firstItem="JMF-g3-A32" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="uvR-9k-rr9"/>
+                <constraint firstItem="HnI-CK-epB" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="40" id="wE6-5b-cml"/>
             </constraints>
             <point key="canvasLocation" x="139" y="96"/>
         </view>
+        <tapGestureRecognizer id="BIV-mV-K3O">
+            <connections>
+                <action selector="boxDidTap:" destination="-1" id="aUy-SZ-pTg"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <systemColor name="systemBackgroundColor">

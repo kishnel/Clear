@@ -55,7 +55,7 @@ class DashboardPresenterTests: XCTestCase {
 		presenter.view = view
 		presenter.creditScoreDidFail(with: NSError.mockError)
 
-		XCTAssertEqual(view.updateState, .error)
+		XCTAssertEqual(view.updateState, .error(NSError.mockError.localizedDescription))
 	}
 
 	func testDataState() throws {

@@ -21,22 +21,21 @@ struct DashboardViewModel: Equatable {
 enum DashboardState: Equatable {
 	case loading
 	case box(DashboardViewModel)
-	case error
+	case error(String)
 }
 
 class DashboardViewController: UIViewController {
 
-	@IBOutlet weak var circleView: CircleView!
-	@IBOutlet weak var boxTitleLabel: UILabel!
-	@IBOutlet weak var boxValueLabel: UILabel!
-	@IBOutlet weak var boxSubtitleLabel: UILabel!
-	@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-	
-	private let interactor: DashboardInteractorProtocol
+	@IBOutlet var circleView: CircleView!
+	@IBOutlet var boxTitleLabel: UILabel!
+	@IBOutlet var boxValueLabel: UILabel!
+	@IBOutlet var boxSubtitleLabel: UILabel!
+	@IBOutlet var activityIndicator: UIActivityIndicatorView!
+	@IBOutlet var errorContainer: UIView!
+	@IBOutlet var errorLabel: UILabel!
+	@IBOutlet var errorButton: UIButton!
 
-	deinit {
-		print("DEINIT \(self)")
-	}
+	private let interactor: DashboardInteractorProtocol
 
 	init(interactor: DashboardInteractorProtocol) {
 
@@ -55,6 +54,16 @@ class DashboardViewController: UIViewController {
 		setup()
 		interactor.viewDidLoad()
 	}
+
+	@IBAction func boxDidTap(_ sender: UITapGestureRecognizer) {
+
+		interactor.boxDidTap()
+	}
+
+	@IBAction func retryButtonDidTap(_ sender: UIButton) {
+
+		interactor.retryButtonDidTap()
+	}
 }
 
 private extension DashboardViewController {
@@ -67,6 +76,7 @@ private extension DashboardViewController {
 		boxTitleLabel.textColor = .label
 		boxValueLabel.textColor = .systemYellow
 		boxSubtitleLabel.textColor = .label
+		errorButton.setTitle(NSLocalizedString("Retry", comment: "Retry button title"), for: .normal)
 	}
 }
 
@@ -77,19 +87,22 @@ extension DashboardViewController: DashboardViewProtocol {
 		switch state {
 		case .loading:
 			circleView.isHidden = true
+			errorContainer.isHidden = true
 			activityIndicator.startAnimating()
 		case .box(let viewModel):
 			circleView.isHidden = false
+			errorContainer.isHidden = true
 			activityIndicator.stopAnimating()
 
 			boxTitleLabel.text = viewModel.boxTitle
 			boxValueLabel.text = viewModel.boxValue
 			boxSubtitleLabel.text = viewModel.boxSubtitle
-		case .error:
-			circleView.isHidden = false
+		case .error(let message):
+			circleView.isHidden = true
+			errorContainer.isHidden = false
 			activityIndicator.stopAnimating()
 
-			print("Show error")
+			errorLabel.text = message
 		}
 	}
 }
