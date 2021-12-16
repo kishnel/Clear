@@ -35,7 +35,7 @@ private class MockRouter: DashboardRouterProtocol {
 
 	private(set) var showDetailDidCall = false
 
-	func showDetail() {
+	func showDetail(animated: Bool) {
 
 		showDetailDidCall = true
 	}

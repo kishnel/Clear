@@ -20,6 +20,7 @@
 		680C0F65276BAC2C005219E6 /* MockDispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680C0F64276BAC2C005219E6 /* MockDispatchQueue.swift */; };
 		680C0F67276BACDC005219E6 /* DispatchQueueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680C0F66276BACDC005219E6 /* DispatchQueueProtocol.swift */; };
 		680C0F69276BB017005219E6 /* DashboardViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680C0F68276BB017005219E6 /* DashboardViewTests.swift */; };
+		680C0F6C276BBC9C005219E6 /* DashboardRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680C0F6B276BBC9C005219E6 /* DashboardRouterTests.swift */; };
 		685CB78E276A8AE2003BD1BB /* URLSession+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685CB78D276A8AE2003BD1BB /* URLSession+Extensions.swift */; };
 		685CB792276AF90F003BD1BB /* CreditScoreRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688C4DB42769E2B500D61014 /* CreditScoreRequest.swift */; };
 		685CB793276AFABA003BD1BB /* creditScore.json in Resources */ = {isa = PBXBuildFile; fileRef = 685CB78F276AAABB003BD1BB /* creditScore.json */; };
@@ -95,6 +96,7 @@
 		680C0F64276BAC2C005219E6 /* MockDispatchQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDispatchQueue.swift; sourceTree = "<group>"; };
 		680C0F66276BACDC005219E6 /* DispatchQueueProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueueProtocol.swift; sourceTree = "<group>"; };
 		680C0F68276BB017005219E6 /* DashboardViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewTests.swift; sourceTree = "<group>"; };
+		680C0F6B276BBC9C005219E6 /* DashboardRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardRouterTests.swift; sourceTree = "<group>"; };
 		685CB78D276A8AE2003BD1BB /* URLSession+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Extensions.swift"; sourceTree = "<group>"; };
 		685CB78F276AAABB003BD1BB /* creditScore.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = creditScore.json; sourceTree = "<group>"; };
 		688C4D5E2769DF3C00D61014 /* Clear.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clear.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -181,6 +183,7 @@
 				680C0F5B276B7709005219E6 /* DashboardPresenterTests.swift */,
 				680C0F5D276B812E005219E6 /* DashboardInteractorTests.swift */,
 				680C0F68276BB017005219E6 /* DashboardViewTests.swift */,
+				680C0F6B276BBC9C005219E6 /* DashboardRouterTests.swift */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
@@ -474,6 +477,7 @@
 				680C0F63276BA60D005219E6 /* MockError.swift in Sources */,
 				680C0F5E276B812E005219E6 /* DashboardInteractorTests.swift in Sources */,
 				680C0F69276BB017005219E6 /* DashboardViewTests.swift in Sources */,
+				680C0F6C276BBC9C005219E6 /* DashboardRouterTests.swift in Sources */,
 				680C0F61276BA5D4005219E6 /* MockSession.swift in Sources */,
 				680C0F5C276B7709005219E6 /* DashboardPresenterTests.swift in Sources */,
 				680C0F65276BAC2C005219E6 /* MockDispatchQueue.swift in Sources */,

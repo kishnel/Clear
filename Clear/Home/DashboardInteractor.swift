@@ -58,6 +58,6 @@ extension DashboardInteractor: DashboardInteractorProtocol {
 
 	func boxDidTap() {
 
-		router.showDetail()
+		router.showDetail(animated: true)
 	}
 }

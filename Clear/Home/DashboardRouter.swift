@@ -10,7 +10,7 @@ import UIKit
 
 protocol DashboardRouterProtocol: AnyObject {
 
-	func showDetail()
+	func showDetail(animated: Bool)
 }
 
 class DashboardRouter {
@@ -37,10 +37,10 @@ class DashboardRouter {
 
 extension DashboardRouter: DashboardRouterProtocol {
 
-	func showDetail() {
+	func showDetail(animated: Bool) {
 
 		let controller = UIViewController()
 		controller.view.backgroundColor = .green
-		navigationController.pushViewController(controller, animated: true)
+		navigationController.pushViewController(controller, animated: animated)
 	}
 }
