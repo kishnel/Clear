@@ -7,23 +7,6 @@
 
 import UIKit
 
-class PippoController: UIViewController {
-
-	override func viewDidLoad() {
-		super.viewDidLoad()
-
-		view.backgroundColor = .red
-		view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(presentDashboard)))
-	}
-
-	@objc
-	func presentDashboard() {
-
-		let router = DashboardRouter(navigationController: navigationController!)
-		router.build()
-	}
-}
-
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 	var window: UIWindow?
@@ -36,11 +19,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		self.window = {
 			let window = UIWindow(windowScene: windowScene)
 
-//			let navigationController = UINavigationController()
-//			let router = DashboardRouter(navigationController: navigationController)
-//			router.build()
-//			window.rootViewController = navigationController
-			window.rootViewController = UINavigationController(rootViewController: PippoController())
+			let navigationController = UINavigationController()
+			let router = DashboardRouter(navigationController: navigationController)
+			router.build()
+			window.rootViewController = navigationController
 
 			return window
 		}()
