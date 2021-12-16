@@ -44,7 +44,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "688C4D9C2769DFA900D61014"
-               BuildableName = "NetworkTests.xctest"
+               BuildableName = "NetworkModuleTests.xctest"
                BlueprintName = "NetworkModuleTests"
                ReferencedContainer = "container:Clear.xcodeproj">
             </BuildableReference>
