@@ -9,22 +9,22 @@ import UIKit
 
 protocol DashboardViewProtocol: AnyObject {
 
-	func update(state: DashboardViewController.State)
+	func update(state: DashboardState)
+}
+
+struct DashboardViewModel: Equatable {
+	let boxTitle: String
+	let boxValue: String
+	let boxSubtitle: String
+}
+
+enum DashboardState: Equatable {
+	case loading
+	case box(DashboardViewModel)
+	case error
 }
 
 class DashboardViewController: UIViewController {
-
-	enum State {
-		case loading
-		case box(ViewModel)
-		case error
-	}
-
-	struct ViewModel {
-		let boxTitle: String
-		let boxValue: String
-		let boxSubtitle: String
-	}
 
 	@IBOutlet weak var circleView: CircleView!
 	@IBOutlet weak var boxTitleLabel: UILabel!
@@ -72,7 +72,7 @@ private extension DashboardViewController {
 
 extension DashboardViewController: DashboardViewProtocol {
 
-	func update(state: State) {
+	func update(state: DashboardState) {
 
 		switch state {
 		case .loading:

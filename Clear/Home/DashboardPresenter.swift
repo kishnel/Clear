@@ -31,7 +31,7 @@ extension DashboardPresenter: DashboardPresenterProtocol {
 
 	func creditScoreDidLoad(score: CreditScoreResponse) {
 
-		let viewModel = DashboardViewController.ViewModel(
+		let viewModel = DashboardViewModel(
 			boxTitle: "Your credit score is",
 			boxValue: "\(score.creditReportInfo.score)",
 			boxSubtitle: "out of \(score.creditReportInfo.maxScoreValue)"
